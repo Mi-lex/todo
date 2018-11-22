@@ -1,0 +1,26 @@
+@mixin custom-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+  
+@mixin wrapper {
+width: 80vw;
+margin: 0 auto;
+
+@media (max-width: $tablet-mobile-width-only) {
+    width: 90vw;
+}
+
+@media (min-width: $desktop-width) {
+    max-width: $desktop-wrapper-width;
+}
+}
+
+@mixin ease-out($duration) {
+transition: all $duration ease-out;
+}
+
+@mixin main-gradient($direction) {
+background: #8A2387 linear-gradient($direction, #8A2387, #E94057, #F27121);
+}

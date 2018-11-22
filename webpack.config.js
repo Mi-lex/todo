@@ -7,12 +7,59 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
+
+const getStyleLoaders = (cssOptions, preProcessor) => {
+    const loaders = [
+      {
+        loader: MiniCssExtractPlugin.loader
+      },
+      {
+        loader: require.resolve('css-loader'),
+        options: cssOptions,
+      },
+      {
+        loader: require.resolve('postcss-loader'),
+        options: {
+          ident: 'postcss',
+          plugins: () => [
+            require('postcss-flexbugs-fixes'),
+            require('postcss-preset-env')({
+              autoprefixer: {
+                flexbox: 'no-2009',
+              },
+              stage: 3,
+            }),
+          ]
+        },
+      },
+    ];
+    if (preProcessor) {
+        if (Array.isArray(preProcessor)) {
+            for (let i = 0; i < preProcessor.length; i++) {
+              const element = preProcessor[i];
+      
+              if (typeof(element) === 'string') {
+                loaders.push(require.resolve(element));
+              } else {
+                  loaders.push(Object.assign(element, {
+                    loader: require.resolve(element.loader)
+                  }));
+              }
+            }
+        } else {
+            loaders.push(require.resolve(preProcessor));
+        }
+    }
+    return loaders;
+  };
 
 const config = {
     entry: {
         app: [
-            './src/js/main.js',
-            './src/sass/style.scss'
+            './src/main.js',
+            './src/style.scss'
         ]
     },
 
@@ -36,14 +83,36 @@ const config = {
             },
             {
                 test: /\.s[ac]ss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        'css-loader',
-                        'postcss-loader',
-                        'sass-loader'
+                exclude: /\.module\.s[ac]ss$/,
+                loader: getStyleLoaders({ importLoaders: 2 }, [
+                  'sass-loader',
+                  {
+                    loader: "sass-resources-loader",
+                    options: {
+                      resources: require(path.join(process.cwd(), "src/sass/utils.js")),
+                    }
+                  }
+                ]),
+                sideEffects: true,
+            },
+            {
+                test: /\.module\.s[ac]ss$/,
+                use: getStyleLoaders(
+                    {
+                        importLoaders: 2,
+                        modules: true,
+                        getLocalIdent: getCSSModuleLocalIdent,
+                    },
+                    [
+                        'sass-loader',
+                        {
+                            loader: "sass-resources-loader",
+                            options: {
+                                resources: require(path.join(process.cwd(), "src/sass/utils.js")),
+                            }
+                        }
                     ]
-                })
+                ),
             },
             {
                 test: /\.eot|ttf|woff2?$/,
@@ -85,7 +154,13 @@ const config = {
         new ExtractTextPlugin("[name].css"),
         new SpriteLoaderPlugin(),
         new HtmlWebpackPlugin({
-            template: './src/html/main.html.js'
+            template: 'src/html/index.html'
+        }),
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: '[name].css',
+            chunkFilename: '[name].chunk.css',
         }),
         // new PurifyCSSPlugin({
         //     paths: glob.sync(path.join(__dirname, 'index.html')),

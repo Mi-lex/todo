@@ -3,9 +3,10 @@
         [
             "@babel/env",
             {
-                "targets": "> 0.25%, not dead",
+                "targets": "> 1%, not dead",
                 "useBuiltIns": "usage"
             }
-        ]
+        ],
+        "@babel/preset-react"
     ]
 }
