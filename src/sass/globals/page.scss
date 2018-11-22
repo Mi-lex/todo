@@ -12,16 +12,22 @@ html {
 
 body {
   position: relative;
-
   min-width: $mobile-width;
   margin: 0;
-  padding: 0;
+  padding: 3vh 0;
 
   font-family: $page-font;
   font-size: $page-font-size;
   font-weight: normal;
   line-height: $page-line-height;
   color: $page-font-color;
+  @include main-gradient(to bottom);
+}
+
+.page-wrapper {
+  @include wrapper;
+  min-height: 94vh;
+  background: #FFFFFF;
 }
 
 img {

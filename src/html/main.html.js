@@ -1,4 +1,5 @@
-import test from './components/test.html';
+import cockpit from './components/cockpit.html';
+import content from './components/content.html';
 
 export default function (templateParams) {
   const html = 
@@ -12,7 +13,10 @@ export default function (templateParams) {
         </head>
           <body>
               <main>
-                ${test}
+                <div class="page-wrapper">
+                  ${cockpit}
+                  ${content}
+                </div>
               </main>
           </body>
     </html>`

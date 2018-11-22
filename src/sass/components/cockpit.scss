@@ -1,0 +1,111 @@
+.cockpit {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 60px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0 8px;
+
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+
+    &__options-toggler {
+        position: relative;
+
+        width: 60px;
+        height: 90%;
+
+        background: none;
+        border: none;
+        border-top-left-radius: 15%;
+        border-top-right-radius: 15%;
+
+        cursor: pointer;
+
+        &::before,
+        &::after {
+            content: '';
+        }
+
+        .dot,
+        &::before,
+        &::after {
+            position: absolute;
+            top: 50%;
+
+            transform: translateY(-50%);
+            font-size: 0;
+
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+
+            background: $secondary-color;
+            border-radius: 50%;
+        }
+
+        &::before {
+            left: 8.5px;
+        }
+        .dot {
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &::after {
+            right: 8.5px;
+        }
+    }
+
+    &__title {
+        align-self: center;
+        margin: 0;
+
+        font-family: 'Pt Sans Narrow', sans-serif;
+        font-size: 32px;
+        color: black;
+    }
+
+    &__add-item {
+        position: relative;
+
+        align-self: center;
+        width: 42px;
+        height: 42px;
+
+        background: $secondary-color;
+        border: none;
+        border-radius: 50%;
+
+        cursor: pointer;
+        
+        @include ease-out(0.15s);
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            display: block;
+            background: white;
+        }
+
+        &::before {
+            width: 15px;
+            height: 3px;
+        }
+
+        &::after {
+            width: 3px;
+            height: 15px;
+        }
+
+        &:hover{
+            transform: scale(1.2);
+        }
+    }
+}

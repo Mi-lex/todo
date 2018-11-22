@@ -1,5 +1,4 @@
 @import './normalize.scss';
-
 // Globals
 @import './globals/fonts.scss';
 @import './globals/variables.scss';
@@ -7,3 +6,6 @@
 @import './globals/page.scss';
 
 // Components
+@import './components/cockpit.scss';
+@import './components/content.scss';
+@import './components/item.scss';
