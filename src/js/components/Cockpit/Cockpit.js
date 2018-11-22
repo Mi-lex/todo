@@ -11,19 +11,23 @@ class Cockpit extends Component {
 
     render() {
         return (
-            <header className={styles.cockpit}>
-                <button className="cockpit__options-toggler">
-                    <span className="dot">
+            <header className={styles['cockpit']}>
+                <button className={styles['options-toggler']}>
+                    <span className={styles['dot']}>
                         Toggle options
                     </span>
                 </button>
-                <h1 className="cockpit__title">
+                <h1 className={styles['title']}>
                     Todo list
                 </h1>
-                <button className="cockpit__add-item">
-                    <span className="visually-hidden">Add Item</span>
+                <button className={styles['add-item']}>
+                    <span className='visually-hidden'>
+                        Add Item
+                    </span>
                 </button>
             </header>
         )
     }
 }
+
+export default Cockpit;

@@ -1,5 +1,5 @@
-// Testing
-
-.app {
-    background: #000;
+.page-wrapper {
+    @include wrapper;
+    min-height: 94vh;
+    background: #FFFFFF;
 }

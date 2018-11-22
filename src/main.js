@@ -6,4 +6,4 @@ import ReactDOM from 'react-dom';
 import App from './js/containers/App';
 
 
-ReactDOM.render(<App/>, document.body);
+ReactDOM.render(<App/>, document.getElementById('root'));
