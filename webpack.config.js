@@ -65,9 +65,9 @@ const config = {
 
     output: {
         path: path.resolve(__dirname, './build'),
-        filename: '[name].js'
+        filename: '[name].js',
     },
-
+    devtool: "source-map",
     module: {
         rules: [
             { 
@@ -79,7 +79,10 @@ const config = {
                 exclude: [
                     path.resolve(__dirname, './node_modules'),
                 ],
-                loader: "babel-loader"
+                use: [
+                    require.resolve('babel-loader'),
+                ],
+                enforce: "pre"
             },
             {
                 test: /\.s[ac]ss$/,
