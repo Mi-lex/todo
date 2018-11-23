@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Button from '../Button/Button';
 import styles from './Cockpit.module.scss';
 
 class Cockpit extends Component {
@@ -7,24 +8,27 @@ class Cockpit extends Component {
         this.state = {
             showOptions: false
         }
+        this.addItem = this.addItem.bind(this);
+    }
+
+    addItem() {
+        this.props.addItem('');
     }
 
     render() {
         return (
             <header className={styles['cockpit']}>
-                <button className={styles['options-toggler']}>
-                    <span className={styles['dot']}>
-                        Toggle options
-                    </span>
-                </button>
+                <Button
+                    className={styles['options-toggler']}
+                    spanClass={styles['dot']}
+                    purpose='Toggle options'/>
                 <h1 className={styles['title']}>
                     Todo list
                 </h1>
-                <button className={styles['add-item']}>
-                    <span className='visually-hidden'>
-                        Add Item
-                    </span>
-                </button>
+                <Button
+                    className={styles['add-item']}
+                    purpose='Add item'
+                    click={this.addItem}/>
             </header>
         )
     }

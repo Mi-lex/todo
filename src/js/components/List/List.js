@@ -10,9 +10,15 @@ class List extends Component {
             this.__itemList = this.props.items;
             this.__itemComponentList = this.props.items.map(item => 
                 <Item
-                    key={item.key}
+                    // Pass all item properties into component props
+                    {...item}
+                    /**
+                     * Dublicate passing key,
+                     * so it's possible to use it
+                     */
                     itemKey={item.key}
-                    text={item.text}/>
+                    removeItem={this.props.removeItem}
+                    saveChanges={this.props.saveChanges}/>
             ).reverse();
         }
 

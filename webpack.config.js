@@ -62,7 +62,9 @@ const config = {
             './src/style.scss'
         ]
     },
-
+    node: {
+        fs: 'empty'
+    },
     output: {
         path: path.resolve(__dirname, './build'),
         filename: '[name].js',

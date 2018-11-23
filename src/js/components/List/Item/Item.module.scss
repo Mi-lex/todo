@@ -71,6 +71,10 @@
             transform: scale(1.2); 
         }
 
+        &:focus {
+            outline: none;
+        }
+
         @include ease-out(0.15s);
     }
 
@@ -88,11 +92,11 @@
     }
 
     &--completed {
-        .item__content {
+        .content {
             text-decoration: line-through;
         }
 
-        .item__option--done {
+        .option--done {
             fill: #2ECC71;
         }
     }
@@ -111,7 +115,7 @@
 
         background: rgba(36, 32, 32, 0.95);
 
-        .item__option {
+        .option {
             margin-left: 10px;
             fill: white;
         }
