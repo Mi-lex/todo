@@ -159,7 +159,7 @@ const config = {
         new ExtractTextPlugin("[name].css"),
         new SpriteLoaderPlugin(),
         new HtmlWebpackPlugin({
-            template: 'src/html/index.html'
+            template: 'src/index.html'
         }),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
