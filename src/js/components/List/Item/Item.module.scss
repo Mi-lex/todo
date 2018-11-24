@@ -104,7 +104,7 @@
     .options {
         position: absolute;
         left: 0;
-        top: 0;
+        top: 1px;
 
         display: flex;
         justify-content: flex-end;
@@ -113,7 +113,7 @@
         height: 100%;
         padding-right: 10px;
 
-        background: rgba(36, 32, 32, 0.95);
+        background: linear-gradient(to right, #eaafc8, #654ea3);
 
         .option {
             margin-left: 10px;
