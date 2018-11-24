@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import Button from '../../Button/Button';
+import Textarea from '../../Textarea/Textarea';
 import {Aux} from '../../../containers/Hoc'
 import styles from './Item.module.scss';
 import styleExtractor from '../../../assets/styleExtractor';
@@ -20,6 +21,8 @@ class Item extends PureComponent {
         }
 
         this.text = React.createRef();
+        this.itemContainer = React.createRef();
+
         this.edit = this.edit.bind(this);
         this.remove = this.remove.bind(this);
         this.saveChanges = this.saveChanges.bind(this);
@@ -63,11 +66,10 @@ class Item extends PureComponent {
         if (this.state.isChanging) {
             content = 
                 <Aux>
-                    <textarea
-                        defaultValue={this.props.text}
-                        ref={this.text}
+                    <Textarea
                         onBlur={this.saveChanges}
-                        className={contentClassName}></textarea>
+                        defaultValue={this.props.text}
+                        className={contentClassName}/>
                 </Aux>
         } else {
             content = 
@@ -108,6 +110,7 @@ class Item extends PureComponent {
 
     saveChanges(e) {
         const text = e.target.value;
+        this.fadeBackground(this.itemContainer.current, '#2ECC71');
 
         if (text.length === 0) {
             this.remove();
@@ -115,6 +118,13 @@ class Item extends PureComponent {
             this.props.saveChanges(this.props.itemKey, text);
             this.shouldGetEditable(false);
         }
+    }
+
+    fadeBackground(element, hexColor) {
+        element.style.backgroundColor = hexColor;
+        setTimeout(() => {
+            element.style.backgroundColor = '';
+        }, 200);
     }
 
     completeTask() {
@@ -151,18 +161,13 @@ class Item extends PureComponent {
             styles['item'];
 
         return (
-            <li className={itemClassNames}
+            <li ref={this.itemContainer}
+                className={itemClassNames}
                 onMouseDown={this.openOptions}
                 onMouseUp={this.cancelOpenOptions}>
                 {this.content}
             </li>
         )
-    }
-
-    componentDidMount() {
-        if (this.state.isChanging) {
-            this.text.current.focus();
-        }
     }
 }
 

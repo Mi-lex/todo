@@ -1,3 +1,9 @@
+@keyframes slide_right {
+    0% {left: -100%; opacity: 0}
+    80% {left: 5%}
+    100% {left: 0; opacity: 1}
+}
+
 .item {
     $line-height: 1.2em;
     $btn-color: #7F8C8D;
@@ -7,6 +13,9 @@
     margin: 1rem 0;
     padding: 1em 1.5em;
     padding-right: 52px;
+
+    overflow: hidden;
+    @include ease-out(0.4s);
 
     &--editable {
         background: rgba(36, 32, 32, 0.1);
@@ -38,11 +47,11 @@
         margin: 0;
         resize: none;
         font: inherit;
+        text-align: justify;
+        word-wrap: break-word;
     }
 
     textarea {
-        height: $line-height;
-
         font-family: $page-font;
         font-size: $page-font-size;
         font-weight: normal;
@@ -114,6 +123,7 @@
         padding-right: 10px;
 
         background: linear-gradient(to right, #eaafc8, #654ea3);
+        animation: slide_right 0.3s;
 
         .option {
             margin-left: 10px;
