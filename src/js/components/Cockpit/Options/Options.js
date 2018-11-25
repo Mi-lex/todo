@@ -6,24 +6,24 @@ class Options extends Component {
         super(props);
     }
 
+    get list() {
+        return this.props.options.map( option => (
+            <li key={option.purpose}
+                className={styles['options-container']}>
+                <button
+                    onClick={option.action}
+                    className={styles['option']}>
+                    {option.purpose}
+                </button>
+            </li>
+        ));
+    }
+
     render() {
         return (
             <ul className={styles['options']}
                 onClick={this.props.toggleOptions}>
-                <li className={styles['options-container']}>
-                    <button
-                        onClick={this.props.removeAllItems} 
-                        className={styles['option']}>
-                        Remove all tasks
-                    </button>
-                </li>
-                <li className={styles['options-container']}>
-                    <button
-                        onClick={this.props.changeOrder}
-                        className={styles['option']}>
-                        Change order
-                    </button>
-                </li>
+                {this.list}
             </ul> 
         )
     }

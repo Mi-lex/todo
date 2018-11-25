@@ -25,6 +25,25 @@ class App extends Component {
         }
     }
 
+    get options() {
+        return [
+            {
+                purpose: 'Remove all tasks',
+                action: this.removeAllItems
+            },
+            {
+                purpose: 'Change order',
+                action: this.changeOrder
+            },
+            {
+                purpose: `${this.state.numbering ?
+                    `Remove numbering` :
+                    `Enable numbering`}`,
+                action: this.toggleNumbering
+            }
+        ]
+    }
+
     get items() {
         /**
          * If tasks should be numbered
@@ -104,7 +123,7 @@ class App extends Component {
         })
     }
 
-    toggleNumbering() {
+    toggleNumbering = () => {
         this.setState({
             ...this.state,
             numbering: !this.state.numbering
@@ -116,8 +135,7 @@ class App extends Component {
             <div className={styles['page-wrapper']}>
                 <Cockpit
                     addItem={this.addItem}
-                    changeOrder={this.changeOrder}
-                    removeAllItems={this.removeAllItems}>
+                    options={this.options}>
                 </Cockpit>
                 <List
                     items={this.items}
