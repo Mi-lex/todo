@@ -66,7 +66,9 @@ class Item extends PureComponent {
             content = 
                 <Aux>
                     <p className={contentClassName}>
-                        {this.props.text}
+                        {`${this.props.index ? 
+                            `${this.props.index}. ` : 
+                            ''}${this.props.text}`}
                     </p>
                     <Button
                         className={completeClassName}

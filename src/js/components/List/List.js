@@ -8,7 +8,7 @@ class List extends Component {
             this.__itemList !== this.props.items) {
             
             this.__itemList = this.props.items;
-            this.__itemComponentList = this.props.items.map((item, index) => 
+            this.__itemComponentList = this.props.items.map(item => 
                 <Item
                     // Pass all item properties into component props
                     {...item}

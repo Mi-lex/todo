@@ -11,6 +11,7 @@ class App extends Component {
         super();
         this.state = {
             reverseOrder: false,
+            numbering: true,
             items: [
                 {
                     key: generateKey(),
@@ -25,9 +26,22 @@ class App extends Component {
     }
 
     get items() {
+        /**
+         * If tasks should be numbered
+         * add index property in each item
+         */
+        const list = this.state.items
+            .map( (item, i) => {
+                item.index = this.state.numbering ? 
+                    i + 1 :
+                    false;
+                return item
+        });
+
+        // Reverse order if necessary.
         return this.state.reverseOrder ?
-            [...this.state.items].reverse() :
-            this.state.items;
+            [...list].reverse() :
+            list;
     }
 
     removeAllItems = () => {
@@ -87,6 +101,13 @@ class App extends Component {
         this.setState({
             ...this.state,
             reverseOrder: !this.state.reverseOrder
+        })
+    }
+
+    toggleNumbering() {
+        this.setState({
+            ...this.state,
+            numbering: !this.state.numbering
         })
     }
 
