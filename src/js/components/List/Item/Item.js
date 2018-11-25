@@ -22,15 +22,6 @@ class Item extends PureComponent {
 
         this.text = React.createRef();
         this.itemContainer = React.createRef();
-
-        this.edit = this.edit.bind(this);
-        this.remove = this.remove.bind(this);
-        this.saveChanges = this.saveChanges.bind(this);
-        this.openOptions = this.openOptions.bind(this);
-        this.completeTask = this.completeTask.bind(this);
-        this.toggleOptions = this.toggleOptions.bind(this);
-        this.shouldGetEditable = this.shouldGetEditable.bind(this);
-        this.cancelOpenOptions = this.cancelOpenOptions.bind(this);
     }
 
     get options() {
@@ -89,11 +80,11 @@ class Item extends PureComponent {
         return content;
     }
 
-    remove() {
+    remove = () => {
         this.props.removeItem(this.props.itemKey);
     }
 
-    edit() {
+    edit = () => {
         this.setState({
             ...this.state,
             showOptions: false,
@@ -101,14 +92,14 @@ class Item extends PureComponent {
         })
     }
 
-    shouldGetEditable(boolean) {
+    shouldGetEditable = boolean => {
         this.setState({
             ...this.state,
             isChanging: boolean
         })
     }
 
-    saveChanges(e) {
+    saveChanges = e => {
         const text = e.target.value;
         this.fadeBackground(this.itemContainer.current, '#2ECC71');
 
@@ -120,28 +111,28 @@ class Item extends PureComponent {
         }
     }
 
-    fadeBackground(element, hexColor) {
+    fadeBackground = (element, hexColor) => {
         element.style.backgroundColor = hexColor;
         setTimeout(() => {
             element.style.backgroundColor = '';
-        }, 200);
+        }, 150);
     }
 
-    completeTask() {
+    completeTask = () => {
         this.setState({
             ...this.state,
             completed: !this.state.completed
         })
     }
 
-    toggleOptions() {
+    toggleOptions = () => {
         this.setState({
             ...this.state,
             showOptions: !this.state.showOptions
         })
     }
 
-    openOptions() {
+    openOptions = () => {
         if (!this.state.isChanging) {
             this.__optionsTimer = setTimeout(() => {
                 this.toggleOptions(true);
@@ -149,7 +140,7 @@ class Item extends PureComponent {
         }
     }
 
-    cancelOpenOptions() {
+    cancelOpenOptions = () => {
         if (this.__optionsTimer) {
             clearTimeout(this.__optionsTimer);
         }

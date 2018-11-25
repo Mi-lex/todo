@@ -1,6 +1,7 @@
 /**
  * <TextareaAutosize />
  * Downloaded from https://github.com/andreypopp/react-textarea-autosize
+ * I added only self focus in componentDidMount method.
  */
 
 import React from 'react';

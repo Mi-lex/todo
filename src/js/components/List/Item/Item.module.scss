@@ -15,7 +15,7 @@
     padding-right: 52px;
 
     overflow: hidden;
-    @include ease-out(0.4s);
+    @include ease-out(0.3s);
 
     &--editable {
         background: rgba(36, 32, 32, 0.1);
@@ -52,13 +52,7 @@
     }
 
     textarea {
-        font-family: $page-font;
-        font-size: $page-font-size;
-        font-weight: normal;
-        line-height: $page-line-height;
         color: $page-font-color;
-
-        background: none;
         border: none;
 
         &:focus {

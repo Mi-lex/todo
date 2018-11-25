@@ -1,111 +1,137 @@
+$horizontal-padding: 8px;
+$mobile-cockpit-height: 60px;
+
 .cockpit {
+    position: relative;
+
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    height: 60px;
+    flex-wrap: wrap;
+    
+    height: $mobile-cockpit-height;
     width: 100%;
     margin-bottom: 10px;
-    padding: 0 8px;
+    padding: 0 $horizontal-padding;
 
     border-top-left-radius: 15%;
     border-top-right-radius: 15%;
+}
 
-    .options-toggler {
-        position: relative;
+.options-toggler {
+    position: absolute;
+    left: $horizontal-padding;
 
-        width: 54px;
-        height: 90%;
+    width: 54px;
+    height: 90%;
 
-        background: none;
-        border: none;
-        border-top-left-radius: 15%;
-        border-top-right-radius: 15%;
+    background: none;
+    border: none;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
 
-        cursor: pointer;
+    cursor: pointer;
 
-        &::before,
-        &::after {
-            content: '';
-        }
-
-        .dot,
-        &::before,
-        &::after {
-            position: absolute;
-            top: 50%;
-
-            transform: translateY(-50%);
-            font-size: 0;
-
-            display: inline-block;
-            width: 9px;
-            height: 9px;
-
-            background: $secondary-color;
-            border-radius: 50%;
-        }
-
-        &::before {
-            left: 8.5px;
-        }
-        .dot {
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        &::after {
-            right: 8.5px;
-        }
+    &:focus {
+        outline: none;
     }
 
-    .title {
-        align-self: center;
-        margin: 0;
-
-        font-family: 'Pt Sans Narrow', sans-serif;
-        font-size: 32px;
-        color: black;
+    &::before,
+    &::after {
+        content: '';
     }
 
-    .add-item {
-        position: relative;
+    .dot,
+    &::before,
+    &::after {
+        position: absolute;
+        top: 50%;
 
-        align-self: center;
-        width: 44px;
-        height: 44px;
+        transform: translateY(-50%);
+        font-size: 0;
+
+        display: inline-block;
+        width: 9px;
+        height: 9px;
 
         background: $secondary-color;
-        border: none;
         border-radius: 50%;
+    }
 
-        cursor: pointer;
-        
-        @include ease-out(0.15s);
+    &::before {
+        left: 8.5px;
+    }
+    .dot {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
-        &::before,
-        &::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+    &::after {
+        right: 8.5px;
+    }
+}
 
-            display: block;
-            background: white;
-        }
+.options-toggler--on {
+    background: #654EA3;
 
-        &::before {
-            width: 15px;
-            height: 3px;
-        }
+    .dot,
+    &::before,
+    &::after {
+        background: white;
+    }
+}
 
-        &::after {
-            width: 3px;
-            height: 15px;
-        }
+.title {
+    width: 100%;
+    height: $mobile-cockpit-height;
+    margin: 0;
 
-        &:hover{
-            transform: scale(1.2);
-        }
+    font-family: 'Pt Sans Narrow', sans-serif;
+    font-size: 32px;
+    line-height: $mobile-cockpit-height;
+    text-align: center;
+    color: black;
+}
+
+.add-item {
+    position: absolute;
+    right: $horizontal-padding;
+
+    align-self: center;
+    width: 44px;
+    height: 44px;
+
+    background: $secondary-color;
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+    
+    @include ease-out(0.15s);
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        display: block;
+        background: white;
+    }
+
+    &::before {
+        width: 15px;
+        height: 3px;
+    }
+
+    &::after {
+        width: 3px;
+        height: 15px;
+    }
+
+    &:hover{
+        transform: scale(1.2);
     }
 }

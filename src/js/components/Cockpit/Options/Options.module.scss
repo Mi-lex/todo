@@ -1,0 +1,52 @@
+.options {
+    width: 70%;
+    max-width: 300px;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin: 0;
+    padding: 10px 8px;
+    list-style: none;
+
+    background-color: #654EA3;
+    z-index: 1;
+
+    border-radius: 10px;
+    border-top-left-radius: 0;
+}
+
+.options-container {
+    &:not(:last-of-type) {
+        margin-bottom: 5px;
+    }
+}
+
+.option {
+    width: 100%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+    background: white;
+    color: black;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        background: #E74C3C;
+        color: white;
+        outline: none;
+    }
+
+    @include ease-out(0.2s);
+}
+
+// @media (min-width: $tablet-width) {
+
+// }

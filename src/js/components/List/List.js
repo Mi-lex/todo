@@ -8,7 +8,8 @@ class List extends Component {
             this.__itemList !== this.props.items) {
 
             this.__itemList = this.props.items;
-            this.__itemComponentList = this.props.items.map(item => 
+
+            this.__itemComponentList = this.props.items.map((item, index) => 
                 <Item
                     // Pass all item properties into component props
                     {...item}
@@ -18,8 +19,9 @@ class List extends Component {
                      */
                     itemKey={item.key}
                     removeItem={this.props.removeItem}
-                    saveChanges={this.props.saveChanges}/>
-            ).reverse();
+                    saveChanges={this.props.saveChanges}>
+                </Item>
+            );
         }
 
         return this.__itemComponentList;
