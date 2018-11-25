@@ -19,6 +19,7 @@ class Options extends Component {
                 </li>
                 <li className={styles['options-container']}>
                     <button
+                        onClick={this.props.changeOrder}
                         className={styles['option']}>
                         Change order
                     </button>

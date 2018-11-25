@@ -10,7 +10,6 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            showOptions: true,
             reverseOrder: false,
             items: [
                 {
@@ -23,6 +22,12 @@ class App extends Component {
                 }
             ]
         }
+    }
+
+    get items() {
+        return this.state.reverseOrder ?
+            [...this.state.items].reverse() :
+            this.state.items;
     }
 
     removeAllItems = () => {
@@ -78,15 +83,23 @@ class App extends Component {
         this.setNewItems(newItems);
     }
 
+    changeOrder = () => {
+        this.setState({
+            ...this.state,
+            reverseOrder: !this.state.reverseOrder
+        })
+    }
+
     render() {
         return (
             <div className={styles['page-wrapper']}>
                 <Cockpit
                     addItem={this.addItem}
+                    changeOrder={this.changeOrder}
                     removeAllItems={this.removeAllItems}>
                 </Cockpit>
                 <List
-                    items={this.state.items}
+                    items={this.items}
                     removeItem={this.removeItem}
                     saveChanges={this.saveChanges}/>
             </div>
