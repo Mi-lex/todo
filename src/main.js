@@ -1,5 +1,6 @@
+import './js/assets/needPolyfillsFor';
 import './js/assets/svg-icons';
-import "svgxuse";
+import 'svgxuse';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
