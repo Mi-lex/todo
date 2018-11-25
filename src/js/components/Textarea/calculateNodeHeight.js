@@ -1,4 +1,4 @@
-import isBrowser from './isBrowser.macro';
+import isBrowser from './isBrowser.js';
 
 const isIE = isBrowser ? !!document.documentElement.currentStyle : false;
 

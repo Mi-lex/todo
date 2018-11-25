@@ -1,10 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
-const glob = require('glob');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const PurifyCSSPlugin = require('purifycss-webpack');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -166,10 +164,7 @@ const config = {
             // both options are optional
             filename: '[name].css',
             chunkFilename: '[name].chunk.css',
-        }),
-        // new PurifyCSSPlugin({
-        //     paths: glob.sync(path.join(__dirname, 'index.html')),
-        // }),
+        })
     ],
 
     optimization: {
@@ -181,7 +176,7 @@ module.exports = (env, argv) => {
     if (argv.mode === 'production') {
         // Plagins
         config.plugins.unshift(
-            new CleanWebpackPlugin(['build'],
+            new CleanWebpackPlugin(['build/img'],
                 {
                     root: __dirname,
                     verbose: true,

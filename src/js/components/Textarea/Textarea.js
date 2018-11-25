@@ -1,7 +1,8 @@
 /**
  * <TextareaAutosize />
  * Downloaded from https://github.com/andreypopp/react-textarea-autosize
- * I added only self focus in componentDidMount method.
+ * I added self focus in componentDidMount method. Also got rid of isBrowser.macro
+ * which existed to provide proper environment I believe
  */
 
 import React from 'react';
