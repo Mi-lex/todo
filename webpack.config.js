@@ -57,7 +57,6 @@ const config = {
     entry: {
         app: [
             './src/main.js',
-            './src/style.scss'
         ]
     },
     node: {
