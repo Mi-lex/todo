@@ -30,6 +30,9 @@ $mobile-cockpit-height: 60px;
     border: none;
     border-top-left-radius: 15%;
     border-top-right-radius: 15%;
+    
+    @include ease-out(0.2s);
+    -ms-transition: none;
 
     cursor: pointer;
 
@@ -58,6 +61,7 @@ $mobile-cockpit-height: 60px;
         background: $secondary-color;
         border-radius: 50%;
         @include ease-out(0.3s);
+        -ms-transition: none;
     }
 
     &::before {
@@ -74,10 +78,17 @@ $mobile-cockpit-height: 60px;
 }
 
 .options-toggler--on {
-    background: #654EA3;
+    background: $options-color;
+    border: 1px solid #fecfef;
+    border-bottom: none;
+
+    z-index: 2;
 
     .dot {
-        display: none;
+        width: 90%;
+        height: 90%;
+        z-index: -1;
+        background: $options-color;
     }
 
     &::before,
