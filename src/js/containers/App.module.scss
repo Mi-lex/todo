@@ -1,7 +1,11 @@
 .page-wrapper {
+    position: relative;
+
     @include wrapper;
     min-height: 94vh;
-    background: #FFFFFF;
+    padding-bottom: 20px;
+
     border-bottom: 1px solid transparent;
     border-radius: 5px;
+    background: #FFFFFF;
 }

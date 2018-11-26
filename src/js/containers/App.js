@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Cockpit from '../components/Cockpit/Cockpit';
 import List from '../components/List/List';
+import Hint from '../components/Hint/Hint';
 import styles from './App.module.scss';
 import keyGenerator from '../assets/keyGenerator';
 
@@ -141,6 +142,7 @@ class App extends Component {
                     items={this.items}
                     removeItem={this.removeItem}
                     saveChanges={this.saveChanges}/>
+                <Hint></Hint>
             </div>
         )
     }
