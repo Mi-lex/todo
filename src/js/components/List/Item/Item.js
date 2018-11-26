@@ -157,7 +157,9 @@ class Item extends PureComponent {
             <li ref={this.itemContainer}
                 className={itemClassNames}
                 onMouseDown={this.openOptions}
-                onMouseUp={this.cancelOpenOptions}>
+                onMouseUp={this.cancelOpenOptions}
+                onTouchStart={this.openOptions}
+                onTouchEnd={this.cancelOpenOptions}>
                 {this.content}
             </li>
         )
