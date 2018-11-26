@@ -57,6 +57,7 @@ $mobile-cockpit-height: 60px;
 
         background: $secondary-color;
         border-radius: 50%;
+        @include ease-out(0.3s);
     }
 
     &::before {
@@ -75,10 +76,26 @@ $mobile-cockpit-height: 60px;
 .options-toggler--on {
     background: #654EA3;
 
-    .dot,
+    .dot {
+        display: none;
+    }
+
     &::before,
     &::after {
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
         background: white;
+        border-radius: 2px;
+    }
+
+    &::before {
+        width: 60%;
+        height: 3px;
+    }
+
+    &::after {
+        height: 60%;
+        width: 3px;
     }
 }
 
