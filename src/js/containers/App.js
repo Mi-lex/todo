@@ -8,22 +8,19 @@ import keyGenerator from '../assets/keyGenerator';
 const generateKey = keyGenerator();
 
 class App extends Component {
-    constructor() {
-        super();
-        this.state = {
-            reverseOrder: false,
-            numbering: true,
-            items: [
-                {
-                    key: generateKey(),
-                    text: 'Warm up'
-                },
-                {
-                    key: generateKey(),
-                    text: 'Buy groceries'
-                }
-            ]
-        }
+    state = {
+        reverseOrder: false,
+        numbering: true,
+        items: [
+            {
+                key: generateKey(),
+                text: 'Warm up'
+            },
+            {
+                key: generateKey(),
+                text: 'Buy groceries'
+            }
+        ]
     }
 
     get options() {
@@ -74,7 +71,6 @@ class App extends Component {
 
     setNewItems = newItemList => {
         this.setState({
-            ...this.state,
             items: newItemList
         });
     }
@@ -92,7 +88,6 @@ class App extends Component {
         }
 
         this.setState({
-            ...this.state,
             items: [...this.state.items, {
                 key: generateKey(),
                 text: text,
@@ -119,14 +114,12 @@ class App extends Component {
 
     changeOrder = () => {
         this.setState({
-            ...this.state,
             reverseOrder: !this.state.reverseOrder
         })
     }
 
     toggleNumbering = () => {
         this.setState({
-            ...this.state,
             numbering: !this.state.numbering
         })
     }

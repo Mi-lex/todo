@@ -5,16 +5,12 @@ import styles from './Cockpit.module.scss';
 import styleExtractor from '../../assets/styleExtractor';
 
 class Cockpit extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showOptions: false
-        }
+    state = {
+        showOptions: false
     }
 
     toggleOptions = () => {
         this.setState({
-            ...this.state,
             showOptions: !this.state.showOptions
         })
     }

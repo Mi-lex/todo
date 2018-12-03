@@ -88,7 +88,6 @@ class Item extends PureComponent {
 
     edit = () => {
         this.setState({
-            ...this.state,
             showOptions: false,
             isChanging: true
         })
@@ -96,7 +95,6 @@ class Item extends PureComponent {
 
     shouldGetEditable = boolean => {
         this.setState({
-            ...this.state,
             isChanging: boolean
         })
     }
@@ -122,14 +120,12 @@ class Item extends PureComponent {
 
     completeTask = () => {
         this.setState({
-            ...this.state,
             completed: !this.state.completed
         })
     }
 
     toggleOptions = () => {
         this.setState({
-            ...this.state,
             showOptions: !this.state.showOptions
         })
     }

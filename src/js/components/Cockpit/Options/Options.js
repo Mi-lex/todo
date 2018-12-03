@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 import styles from './Options.module.scss';
 
 class Options extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     get list() {
         return this.props.options.map( option => (
             <li key={option.purpose}
@@ -24,7 +20,7 @@ class Options extends Component {
             <ul className={styles['options']}
                 onClick={this.props.toggleOptions}>
                 {this.list}
-            </ul> 
+            </ul>
         )
     }
 }
