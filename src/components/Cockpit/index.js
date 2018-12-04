@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import Options from './Options';
+import OptionsToggler from './OptionsToggler';
 import Button from '../Button';
 import classes from './Cockpit.module.scss';
-import styleExtractor from '../../utilities/styleExtractor';
 
 class Cockpit extends Component {
     state = {
@@ -27,18 +27,11 @@ class Cockpit extends Component {
     }
 
     render() {
-        const optionBtnClassName = this.state.showOptions ?
-            styleExtractor(classes, 
-                ['options-toggler', 'options-toggler--on']) : 
-            classes['options-toggler'];
-
         return (
             <header className={classes['cockpit']}>
-                <Button
-                    className={optionBtnClassName}
-                    spanClass={classes['dot']}
-                    purpose='Toggle options'
-                    click={this.toggleOptions}/>
+                <OptionsToggler 
+                    showOptions={this.state.showOptions}
+                    toggleOptions={this.toggleOptions}/>
                 <h1 className={classes['title']}>
                     Todo list
                 </h1>

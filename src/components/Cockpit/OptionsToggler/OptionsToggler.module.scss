@@ -1,0 +1,91 @@
+.options-toggler {
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+
+    width: 54px;
+    height: 90%;
+
+    background: none;
+    border: none;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+    
+    @include ease-out(0.2s);
+    -ms-transition: none;
+
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+    &::before,
+    &::after {
+        content: '';
+    }
+
+    .dot,
+    &::before,
+    &::after {
+        position: absolute;
+        top: 50%;
+
+        transform: translateY(-50%);
+        font-size: 0;
+
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+
+        background: $secondary-color;
+        border-radius: 50%;
+        @include ease-out(0.3s);
+        -ms-transition: none;
+    }
+
+    &::before {
+        left: 8.5px;
+    }
+    .dot {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &::after {
+        right: 8.5px;
+    }
+}
+
+.options-toggler--on {
+    background: $options-color;
+    border: 1px solid #fecfef;
+    border-bottom: none;
+
+    z-index: 2;
+
+    .dot {
+        width: 90%;
+        height: 90%;
+        z-index: -1;
+        background: $options-color;
+    }
+
+    &::before,
+    &::after {
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        background: white;
+        border-radius: 2px;
+    }
+
+    &::before {
+        width: 60%;
+        height: 3px;
+    }
+
+    &::after {
+        height: 60%;
+        width: 3px;
+    }
+}
