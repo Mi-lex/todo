@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Cockpit from '../components/Cockpit/Cockpit';
-import List from '../components/List/List';
-import Hint from '../components/Hint/Hint';
-import styles from './App.module.scss';
-import keyGenerator from '../assets/keyGenerator';
+import Cockpit from '../components/Cockpit';
+import List from '../components/List';
+import Hint from '../components/Hint';
+import classes from './App.module.scss';
+import keyGenerator from '../utilities/keyGenerator';
 
 const generateKey = keyGenerator();
 
@@ -35,7 +35,7 @@ class App extends Component {
             },
             {
                 purpose: `${this.state.numbering ?
-                    `Remove numbering` :
+                    `Disable numbering` :
                     `Enable numbering`}`,
                 action: this.toggleNumbering
             }
@@ -126,7 +126,7 @@ class App extends Component {
 
     render() {
         return (
-            <div className={styles['page-wrapper']}>
+            <div className={classes['page-wrapper']}>
                 <Cockpit
                     addItem={this.addItem}
                     options={this.options}>

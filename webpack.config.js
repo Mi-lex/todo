@@ -91,7 +91,7 @@ const config = {
                   {
                     loader: "sass-resources-loader",
                     options: {
-                      resources: require(path.join(process.cwd(), "src/sass/utils.js")),
+                      resources: require(path.join(process.cwd(), "src/assets/scss/utils.js")),
                     }
                   }
                 ]),
@@ -110,7 +110,7 @@ const config = {
                         {
                             loader: "sass-resources-loader",
                             options: {
-                                resources: require(path.join(process.cwd(), "src/sass/utils.js")),
+                                resources: require(path.join(process.cwd(), "src/assets/scss/utils.js")),
                             }
                         }
                     ]

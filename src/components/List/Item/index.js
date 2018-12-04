@@ -1,9 +1,9 @@
 import React, {PureComponent} from 'react';
-import Button from '../../Button/Button';
-import Textarea from '../../Textarea/Textarea';
+import Button from '../../Button';
+import Textarea from '../../Textarea';
 import {Aux} from '../../../containers/Hoc'
-import styles from './Item.module.scss';
-import styleExtractor from '../../../assets/styleExtractor';
+import classes from './Item.module.scss';
+import styleExtractor from '../../../utilities/styleExtractor';
 
 class Item extends PureComponent {
     constructor(props) {
@@ -26,12 +26,12 @@ class Item extends PureComponent {
 
     get options() {
         const editClassname = 
-            styleExtractor(styles, ['option', 'option--edit']);
+            styleExtractor(classes, ['option', 'option--edit']);
         const deleteClassName =
-            styleExtractor(styles, ['option', 'option--delete']);
+            styleExtractor(classes, ['option', 'option--delete']);
 
         return (
-            <div className={styles['options']}>
+            <div className={classes['options']}>
                 <Button
                     className={editClassname}
                     purpose='Edit Task'
@@ -48,9 +48,9 @@ class Item extends PureComponent {
 
     get content() {
         const completeClassName = 
-            styleExtractor(styles, ['option', 'option--done']);
+            styleExtractor(classes, ['option', 'option--done']);
 
-        const contentClassName = styles['content'];
+        const contentClassName = classes['content'];
 
         let content;
         // Use <textarea> instead of <p> whe editing is needed
@@ -146,8 +146,8 @@ class Item extends PureComponent {
 
     render() {
         const itemClassNames = this.state.completed ?
-            styleExtractor(styles, ['item', 'item--completed']) :
-            styles['item'];
+            styleExtractor(classes, ['item', 'item--completed']) :
+            classes['item'];
 
         return (
             <li ref={this.itemContainer}

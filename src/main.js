@@ -1,11 +1,11 @@
-import './js/assets/needPolyfillsFor';
-import './js/assets/svg-icons';
+import './assets/needPolyfillsFor';
+import './assets/svg-icons';
 import 'svgxuse';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './containers/App';
 import './style.scss';
-import App from './js/containers/App';
 
 
 ReactDOM.render(<App/>, document.getElementById('root'));

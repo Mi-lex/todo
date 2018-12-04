@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import styles from './Options.module.scss';
+import classes from './Options.module.scss';
 
 class Options extends Component {
     get list() {
         return this.props.options.map( option => (
             <li key={option.purpose}
-                className={styles['options-container']}>
+                className={classes['options-container']}>
                 <button
                     onClick={option.action}
-                    className={styles['option']}>
+                    className={classes['option']}>
                     {option.purpose}
                 </button>
             </li>
@@ -17,7 +17,7 @@ class Options extends Component {
 
     render() {
         return (
-            <ul className={styles['options']}
+            <ul className={classes['options']}
                 onClick={this.props.toggleOptions}>
                 {this.list}
             </ul>
@@ -25,4 +25,4 @@ class Options extends Component {
     }
 }
 
-    export default Options;
+export default Options;

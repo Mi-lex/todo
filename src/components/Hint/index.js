@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './Hint.module.scss';
+import classes from './Hint.module.scss';
 
-const hint = props => (
+const hint = () => (
     <p  tabIndex="0"
-        className={styles['hint']}>
+        className={classes['hint']}>
         <span className="visually-hidden">
             Toggle hint
         </span>
