@@ -1,12 +1,14 @@
-const webpack = require('webpack');
-const path = require('path');
+const webpack = require(`webpack`);
+const path = require(`path`);
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
+const CleanWebpackPlugin = require(`clean-webpack-plugin`);
+const UglifyJsPlugin = require(`uglifyjs-webpack-plugin`);
+const SpriteLoaderPlugin = require(`svg-sprite-loader/plugin`);
+const HtmlWebpackPlugin = require(`html-webpack-plugin`);
+const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
+const getCSSModuleLocalIdent = require(`react-dev-utils/getCSSModuleLocalIdent`);
+
+const BUILD_FOLDER = 'docs';
 
 const getStyleLoaders = (cssOptions, preProcessor) => {
     const loaders = [
@@ -14,18 +16,18 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
         loader: MiniCssExtractPlugin.loader
       },
       {
-        loader: require.resolve('css-loader'),
+        loader: require.resolve(`css-loader`),
         options: cssOptions,
       },
       {
-        loader: require.resolve('postcss-loader'),
+        loader: require.resolve(`postcss-loader`),
         options: {
-          ident: 'postcss',
+          ident: `postcss`,
           plugins: () => [
-            require('postcss-flexbugs-fixes'),
-            require('postcss-preset-env')({
+            require(`postcss-flexbugs-fixes`),
+            require(`postcss-preset-env`)({
               autoprefixer: {
-                flexbox: 'no-2009',
+                flexbox: `no-2009`,
               },
               stage: 3,
             }),
@@ -38,7 +40,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
             for (let i = 0; i < preProcessor.length; i++) {
               const element = preProcessor[i];
       
-              if (typeof(element) === 'string') {
+              if (typeof(element) === `string`) {
                 loaders.push(require.resolve(element));
               } else {
                   loaders.push(Object.assign(element, {
@@ -56,30 +58,30 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
 const config = {
     entry: {
         app: [
-            './src/main.js',
+            `./src/main.js`,
         ]
     },
     node: {
-        fs: 'empty'
+        fs: `empty`
     },
     output: {
-        path: path.resolve(__dirname, './build'),
-        filename: '[name].js',
+        path: path.resolve(__dirname, `${BUILD_FOLDER}`),
+        filename: `[name].js`,
     },
     devtool: "source-map",
     module: {
         rules: [
             { 
                 test: /\.html$/, 
-                loader: 'html-loader'
+                loader: `html-loader`
             },
             {
                 test: /\.js$/,
                 exclude: [
-                    path.resolve(__dirname, './node_modules'),
+                    path.resolve(__dirname, `./node_modules`),
                 ],
                 use: [
-                    require.resolve('babel-loader'),
+                    require.resolve(`babel-loader`),
                 ],
                 enforce: "pre"
             },
@@ -87,7 +89,7 @@ const config = {
                 test: /\.s[ac]ss$/,
                 exclude: /\.module\.s[ac]ss$/,
                 loader: getStyleLoaders({ importLoaders: 2 }, [
-                  'sass-loader',
+                  `sass-loader`,
                   {
                     loader: "sass-resources-loader",
                     options: {
@@ -106,7 +108,7 @@ const config = {
                         getLocalIdent: getCSSModuleLocalIdent,
                     },
                     [
-                        'sass-loader',
+                        `sass-loader`,
                         {
                             loader: "sass-resources-loader",
                             options: {
@@ -118,35 +120,35 @@ const config = {
             },
             {
                 test: /\.eot|ttf|woff2?$/,
-                loader: 'file-loader',
+                loader: `file-loader`,
                 options: {
-                    name: './fonts/[name].[ext]'
+                    name: `./fonts/[name].[ext]`
                 }
             },
             {
                 test: /\.(png|jpe?g|gif)$/,
                 loaders: [
                     {
-                        loader: 'file-loader',
+                        loader: `file-loader`,
                         options: {
-                            name: './img/[name].[ext]'
+                            name: `./img/[name].[ext]`
                         }
                     },
 
-                    'img-loader'
+                    `img-loader`
                 ],
             },
             {
                 test: /\.svg$/,
                 use: [
                     {
-                        loader: 'svg-sprite-loader',
+                        loader: `svg-sprite-loader`,
                         options: {
                             extract: true,
-                            publicPath: '/img/'
+                            publicPath: `/img/`
                         }
                     },
-                    'svgo-loader'
+                    `svgo-loader`
                 ]
             }
         ]
@@ -156,13 +158,13 @@ const config = {
         new ExtractTextPlugin("[name].css"),
         new SpriteLoaderPlugin(),
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            template: `src/index.html`
         }),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: '[name].css',
-            chunkFilename: '[name].chunk.css',
+            filename: `[name].css`,
+            chunkFilename: `[name].chunk.css`,
         })
     ],
 
@@ -172,10 +174,10 @@ const config = {
 };
 
 module.exports = (env, argv) => {
-    if (argv.mode === 'production') {
+    if (argv.mode === `production`) {
         // Plagins
         config.plugins.unshift(
-            new CleanWebpackPlugin(['build/img'],
+            new CleanWebpackPlugin([`${BUILD_FOLDER}/img`],
                 {
                     root: __dirname,
                     verbose: true,
